@@ -10,12 +10,18 @@ pnpm-debug.log*
 
 # Dependency directories
 node_modules/
+.venv/
 
 # Build outputs
 dist/
 build/
 .next/
 out/
+.nuxt/
+.output/
+.nitro/
+.data/
+.cache/
 
 # Environment files
 .env

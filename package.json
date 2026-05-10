@@ -1,0 +1,18 @@
+{
+  "name": "lawer-website",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "build:frontend": "npm run build --prefix frontend",
+    "typecheck:frontend": "npm run typecheck --prefix frontend",
+    "verify": "bash scripts/verify.sh"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,28 @@
+---
+description: 無憂吳律網站分階段實作、企劃書優先與技術紅線
+alwaysApply: true
+---
+
+# 本專案 Agent 實作規約（自動套用）
+
+## 開工前（本輪對話若涉及寫程式／改設定）
+
+1. 讀取 repo 根目錄 **`DEVELOPMENT-PHASE.md`** 中的 **目前階段數字**（0～12），對照 **`DEVELOPMENT-WORKFLOW.md`** 第三節「階段總覽」與第四節該階段之「做／不做／驗收」。
+2. 全文產品與技術邊界以 **`website-planning.md`** 為準（必讀 **§8、§8.7**；RWD 與 Header/Footer 見 **§2.0、§2.2b**；色系 **§5.5**）。
+3. 若使用者在**同一輪對話**中明寫了不同階段號或明確授權跨階段，以對話為準；回覆開頭須註明依 `DEVELOPMENT-PHASE.md` 或依使用者指定。
+
+## 回覆開頭必做
+
+簡列：**(a)** 本階段「要做」與「不做」（以 `DEVELOPMENT-WORKFLOW.md` 第四節為準）；**(b)** 使用的階段編號依據。
+
+## 技術與範圍紅線
+
+- 技術棧：**Nuxt 3 + TypeScript**、**Tailwind**、**Nuxt UI**、**Lucide**、進階動效 **GSAP**（並遵守 `website-planning.md` **§4.5**、`prefers-reduced-motion`）。**禁止**引入 **Supabase**；**禁止**將 Meta App Secret、郵件密碼等置於前端。
+- **後端**僅 **Node.js**（Express / Fastify / Hono 擇一）於 **Railway**，職責僅 **§8.4**（聯絡表單寄信、IG Graph API 代理）。
+- **Mobile-first**；不得只做桌面後硬縮。
+- **只改動**本階段範圍內必要檔案；**禁止**擅自開始下一階段，或新增 **§2.2** 資訊架構未列之頁面類型。
+- 素材未齊：**佔位圖／假資料**，並以註解或集中常數標 **`TODO(ASSET)`**、**`TODO(SOCIAL)`**；聯絡方式須與 **`intruduction.md`** 一致，勿臆造。
+
+## 收尾必做
+
+簡述變更檔案列表，以及使用者如何在本機驗收（指令與應開啟的 URL 路徑）。
