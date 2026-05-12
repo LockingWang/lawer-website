@@ -30,7 +30,7 @@
 lawer-website/
 ├── frontend/          # Nuxt 3 前端（階段 1 起初始化並可 npm run dev）
 ├── backend/           # Node API（階段 8 起實作寄信；階段 10 起 IG 代理）
-├── images/            # 設計素材（LOGO 等），非前端建置輸出
+├── images/            # 設計素材（`firm-logo-*`、`firm-brand-mark-*`、律師肖像、名片等 ASCII 檔名）；非前端建置輸出，上線前請同步複製至 `frontend/public/`
 ├── website-planning.md
 ├── DEVELOPMENT-WORKFLOW.md
 ├── DEVELOPMENT-PHASE.md
