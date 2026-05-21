@@ -1,0 +1,77 @@
+name: Deploy Backend to Cloud Run
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend.yml'
+
+env:
+  PROJECT_ID: lawer-website
+  REGION: asia-east1
+  SERVICE: lawer-backend
+  REGISTRY: asia-east1-docker.pkg.dev
+  REPOSITORY: lawer
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker ${{ env.REGISTRY }} --quiet
+
+      - name: Build and push Docker image
+        run: |
+          IMAGE="${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/backend:${{ github.sha }}"
+          docker build -t "$IMAGE" ./backend
+          docker push "$IMAGE"
+          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
+
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE }}
+          image: ${{ env.IMAGE }}
+          region: ${{ env.REGION }}
+          flags: >-
+            --allow-unauthenticated
+            --port=3001
+            --min-instances=0
+            --max-instances=3
+            --memory=256Mi
+            --cpu=1
+          env_vars: |
+            NODE_ENV=production
+            CORS_ORIGINS=${{ secrets.CORS_ORIGINS }}
+            CORS_ORIGIN_SUFFIXES=${{ secrets.CORS_ORIGIN_SUFFIXES }}
+            CONTACT_TO_EMAIL=${{ secrets.CONTACT_TO_EMAIL }}
+            SMTP_FROM=${{ secrets.SMTP_FROM }}
+            SMTP_HOST=${{ secrets.SMTP_HOST }}
+            SMTP_PORT=${{ secrets.SMTP_PORT }}
+            SMTP_USER=${{ secrets.SMTP_USER }}
+            SMTP_PASS=${{ secrets.SMTP_PASS }}
+            RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+            RESEND_FROM=${{ secrets.RESEND_FROM }}
+            INSTAGRAM_IG_USER_ID=${{ secrets.INSTAGRAM_IG_USER_ID }}
+            INSTAGRAM_ACCESS_TOKEN=${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+            META_APP_ID=${{ secrets.META_APP_ID }}
+            META_APP_SECRET=${{ secrets.META_APP_SECRET }}
+
+      - name: Show deployed URL
+        run: echo "Deployed to ${{ steps.deploy.outputs.url }}"
