@@ -6,6 +6,9 @@ import {
   siteNameZh,
   socialLineOfficialQrSrc
 } from '~/utils/siteContact'
+
+const { buildVersion } = useRuntimeConfig().public
+const shortVersion = buildVersion ? buildVersion.slice(0, 7) : 'dev'
 </script>
 
 <template>
@@ -97,6 +100,7 @@ import {
 
     <div class="border-t border-white/10 py-4 text-center text-xs text-surface/60">
       © {{ new Date().getFullYear() }} {{ siteNameZh }} · 網站建置中
+      <span class="ml-3 opacity-40">v{{ shortVersion }}</span>
     </div>
   </footer>
 </template>

@@ -58,7 +58,7 @@ jobs:
             --cpu=1
           env_vars: |
             NODE_ENV=production
-            CORS_ORIGINS=${{ secrets.CORS_ORIGINS }}
+            CORS_ORIGINS=${{ secrets.CORS_ORIGINS }},https://lawer-website.pages.dev
             CORS_ORIGIN_SUFFIXES=${{ secrets.CORS_ORIGIN_SUFFIXES }}
             CONTACT_TO_EMAIL=${{ secrets.CONTACT_TO_EMAIL }}
             SMTP_FROM=${{ secrets.SMTP_FROM }}

@@ -38,6 +38,7 @@ jobs:
         run: pnpm run generate
         env:
           NUXT_PUBLIC_API_BASE: https://lawer-backend-323796758315.asia-east1.run.app
+          NUXT_PUBLIC_BUILD_VERSION: ${{ github.sha }}
 
       - name: Deploy to Cloudflare Pages
         run: |

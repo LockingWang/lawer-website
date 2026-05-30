@@ -20,7 +20,8 @@ export default defineNuxtConfig({
   /** 階段 9：`NUXT_PUBLIC_API_BASE` 覆寫此值（見 `frontend/.env.example`） */
   runtimeConfig: {
     public: {
-      apiBase: ''
+      apiBase: '',
+      buildVersion: ''
     }
   },
 
