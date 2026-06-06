@@ -25,11 +25,23 @@
         </div>
       </div>
 
-      <!-- 右：裝飾插圖 -->
-      <div class="relative hidden shrink-0 items-center justify-center lg:flex">
-        <div class="absolute h-60 w-60 rounded-full border-2 border-dashed border-brand-200" aria-hidden="true" />
-        <div class="flex h-52 w-52 items-center justify-center rounded-full bg-brand-50">
-          <UIcon name="i-lucide-scale" class="h-28 w-28 text-brand-400" aria-hidden="true" />
+      <!-- 右：影片框 -->
+      <div class="relative hidden shrink-0 lg:block" aria-hidden="true">
+        <!-- 偏移裝飾邊框 -->
+        <div class="absolute -bottom-3 -right-3 h-full w-full rounded-2xl border-2 border-brand-200" />
+        <!-- 影片容器 16:9 -->
+        <div class="relative w-72 aspect-video overflow-hidden rounded-2xl shadow-lg">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            class="h-full w-full object-cover"
+          >
+            <source src="/videos/paper_work.mp4" type="video/mp4">
+          </video>
+          <!-- 品牌色薄膜，讓影片融入配色 -->
+          <div class="absolute inset-0 bg-brand-700/15" />
         </div>
       </div>
     </div>

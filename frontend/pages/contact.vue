@@ -19,67 +19,55 @@ usePageSeo(
 </script>
 
 <template>
-  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:max-w-5xl lg:px-8 lg:py-14">
-    <header>
-      <h1 class="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+
+    <!-- Header -->
+    <header class="border-b border-neutral-sage/30 pb-10">
+      <p class="text-xs font-semibold tracking-widest text-accent-teal uppercase">
+        Contact
+      </p>
+      <h1 class="mt-2 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
         聯繫本所
       </h1>
-      <p class="mt-3 max-w-2xl text-ink/80">
-        若您需要法律協助，歡迎先來電或寄信；亦可使用下方留言表單（經後端驗證與寄信，請於 <code class="rounded bg-surface-muted px-1 text-sm">frontend/.env</code> 設定 <code class="rounded bg-surface-muted px-1 text-sm">NUXT_PUBLIC_API_BASE</code> 指向 Railway 或本機 API）。
+      <p class="mt-3 max-w-xl text-lg leading-relaxed text-ink/75">
+        若您需要法律協助，歡迎來電或填寫下方表單，我們會盡快與您聯繫。
       </p>
     </header>
 
-    <div class="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-12">
-      <div class="space-y-10">
-        <section class="rounded-xl border border-neutral-sage/40 bg-surface p-6 shadow-sm" aria-labelledby="contact-methods">
-          <h2 id="contact-methods" class="text-lg font-semibold text-ink">
+    <div class="mt-10 grid gap-6 lg:grid-cols-[1fr_400px] lg:items-start lg:gap-10">
+
+      <!-- 左欄：聯絡資訊 -->
+      <div class="space-y-6">
+
+        <!-- 聯絡方式 -->
+        <section
+          class="rounded-2xl border border-neutral-sage/25 bg-white p-6 shadow-sm"
+          aria-labelledby="contact-methods"
+        >
+          <h2 id="contact-methods" class="flex items-center gap-2 text-lg font-semibold text-ink">
+            <UIcon name="i-lucide-phone" class="h-5 w-5 shrink-0 text-accent-teal" aria-hidden="true" />
             聯絡方式
           </h2>
-          <p class="mt-1 text-sm text-ink/70">
-            與全站頁尾、本所／律師頁同一資料來源（<code class="rounded bg-surface-muted px-1">siteContact.ts</code>）。
-          </p>
-          <PublicContactBlock class="mt-4" variant="default" />
+          <PublicContactBlock class="mt-5" variant="default" />
         </section>
 
+        <!-- 地圖 -->
         <section
-          id="business-card"
-          class="rounded-xl border border-neutral-sage/40 bg-surface p-6 shadow-sm"
-          aria-labelledby="contact-business-card"
+          class="rounded-2xl border border-neutral-sage/25 bg-white p-6 shadow-sm"
+          aria-labelledby="contact-map"
         >
-          <h2 id="contact-business-card" class="text-lg font-semibold text-ink">
-            電子名片
+          <h2 id="contact-map" class="flex items-center gap-2 text-lg font-semibold text-ink">
+            <UIcon name="i-lucide-map-pin" class="h-5 w-5 shrink-0 text-accent-teal" aria-hidden="true" />
+            事務所位置
           </h2>
-          <p class="mt-1 text-sm leading-relaxed text-ink/70">
-            以下為事務所提供之名片圖檔，方便您儲存或轉傳。若與本頁「聯絡方式」文字不一致，以<strong class="font-medium text-ink">文字區塊與頁尾</strong>為準（亦利於螢幕閱讀器與搜尋引擎）。
-          </p>
-          <figure class="mt-5 mx-auto max-w-sm">
-            <img
-              :src="lawyerBusinessCardSrc"
-              :alt="lawyerBusinessCardAlt()"
-              width="1181"
-              height="1181"
-              class="w-full rounded-lg border border-neutral-sage/30 bg-surface-muted object-contain shadow-sm"
-              loading="lazy"
-              decoding="async"
-            >
-            <figcaption class="mt-2 text-center text-xs text-ink/60">
-              圖檔內之 LINE QR 請以足夠尺寸顯示後再掃描；全站頁尾亦提供官方 LINE QR（<code class="rounded bg-surface-muted px-1">line-official-qr.png</code>）。
-            </figcaption>
-          </figure>
-        </section>
-
-        <section class="rounded-xl border border-neutral-sage/40 bg-surface p-6 shadow-sm" aria-labelledby="contact-map">
-          <h2 id="contact-map" class="text-lg font-semibold text-ink">
-            位置與地圖
-          </h2>
-          <p class="mt-2 text-sm leading-relaxed text-ink/80">
+          <p class="mt-2 text-sm text-ink/65">
             {{ addressSingleLine }}
           </p>
-          <div class="mt-4 overflow-hidden rounded-lg border border-neutral-sage/40 bg-surface-muted shadow-sm">
-            <div class="relative aspect-[4/3] w-full max-h-[min(70vh,520px)] min-h-[200px]">
+          <div class="mt-4 overflow-hidden rounded-xl border border-neutral-sage/25">
+            <div class="relative aspect-video w-full">
               <iframe
                 :src="googleMapsEmbedSrc"
-                class="absolute left-0 top-0 h-full w-full border-0"
+                class="absolute inset-0 h-full w-full border-0"
                 title="Google 地圖：事務所位置"
                 width="600"
                 height="450"
@@ -89,43 +77,73 @@ usePageSeo(
               />
             </div>
           </div>
-          <div class="mt-4 flex flex-wrap items-center gap-3">
-            <UButton
-              :to="googleMapsPlaceSearchHref"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="primary"
-              variant="soft"
-              icon="i-lucide-external-link"
-            >
-              在 Google 地圖開啟（新分頁）
-            </UButton>
-            <p class="text-xs text-ink/60">
-              嵌入地圖由 Google 提供；若無法顯示請改點上方按鈕。
-            </p>
-          </div>
+          <UButton
+            :to="googleMapsPlaceSearchHref"
+            target="_blank"
+            rel="noopener noreferrer"
+            color="primary"
+            variant="soft"
+            icon="i-lucide-external-link"
+            class="mt-4"
+          >
+            在 Google 地圖開啟
+          </UButton>
         </section>
 
-        <section class="rounded-xl border border-neutral-sage/40 bg-surface p-6 shadow-sm" aria-labelledby="contact-social">
-          <h2 id="contact-social" class="text-lg font-semibold text-ink">
+        <!-- 社群媒體 -->
+        <section
+          class="rounded-2xl border border-neutral-sage/25 bg-white p-6 shadow-sm"
+          aria-labelledby="contact-social"
+        >
+          <h2 id="contact-social" class="flex items-center gap-2 text-lg font-semibold text-ink">
+            <UIcon name="i-lucide-share-2" class="h-5 w-5 shrink-0 text-accent-teal" aria-hidden="true" />
             社群媒體
           </h2>
-          <p class="mt-1 text-xs text-ink/70">
-            另開新分頁前往官方帳號；加入 LINE 請掃描頁尾或下方電子名片內 QR。
+          <p class="mt-2 text-sm text-ink/65">
+            歡迎追蹤關注，掌握最新法律資訊與本所動態。
           </p>
           <SocialBrandLinks class="mt-4" variant="default" />
         </section>
+
+        <!-- 電子名片 -->
+        <section
+          class="rounded-2xl border border-neutral-sage/25 bg-white p-6 shadow-sm"
+          aria-labelledby="contact-card"
+        >
+          <h2 id="contact-card" class="flex items-center gap-2 text-lg font-semibold text-ink">
+            <UIcon name="i-lucide-contact" class="h-5 w-5 shrink-0 text-accent-teal" aria-hidden="true" />
+            電子名片
+          </h2>
+          <div class="mt-4 flex justify-center">
+            <img
+              :src="lawyerBusinessCardSrc"
+              :alt="lawyerBusinessCardAlt()"
+              width="1181"
+              height="1181"
+              class="w-full max-w-xs rounded-xl border border-neutral-sage/25 shadow-sm"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+        </section>
+
       </div>
 
-      <section class="rounded-xl border border-neutral-sage/40 bg-surface p-6 shadow-sm lg:sticky lg:top-24 lg:self-start" aria-labelledby="contact-form">
-        <h2 id="contact-form" class="text-lg font-semibold text-ink">
+      <!-- 右欄：留言表單（sticky） -->
+      <section
+        class="rounded-2xl border border-neutral-sage/25 bg-white p-6 shadow-sm lg:sticky lg:top-24"
+        aria-labelledby="contact-form"
+      >
+        <h2 id="contact-form" class="flex items-center gap-2 text-lg font-semibold text-ink">
+          <UIcon name="i-lucide-mail" class="h-5 w-5 shrink-0 text-accent-teal" aria-hidden="true" />
           線上留言
         </h2>
-        <p class="mt-1 text-sm text-ink/70">
-          建議欄位依企劃書 §2.5；送出時呼叫後端 <code class="rounded bg-surface-muted px-1">POST /api/contact</code>（未設定 API 基底時僅前端模擬成功）。
+        <p class="mt-2 text-sm text-ink/65">
+          填寫諮詢內容，律師確認後主動與您聯繫。
         </p>
         <ContactRequestForm class="mt-6" />
       </section>
+
     </div>
   </div>
 </template>
