@@ -13,11 +13,11 @@ import { practiceAreaCards } from '~/utils/intruductionSeed'
         <p class="mt-1 max-w-2xl text-sm text-ink/75">
           依您需求初步對應服務類型；實際個案仍須視事實與適用法令而定。
         </p>
-        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-8 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <div
             v-for="card in practiceAreaCards"
             :key="card.title"
-            class="flex flex-col rounded-xl border border-brand-200 bg-surface p-5 shadow-sm"
+            class="flex h-full flex-col rounded-xl border border-brand-200 bg-surface p-5 shadow-sm"
           >
             <h3 class="text-lg font-semibold text-ink">
               {{ card.title }}
