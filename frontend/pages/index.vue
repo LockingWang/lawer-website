@@ -13,6 +13,9 @@ usePageSeo(
     </MotionSection>
     <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
     <MotionSection>
+      <HomeNewsPick />
+    </MotionSection>
+    <MotionSection>
       <HomeTrustStrip />
     </MotionSection>
     <MotionSection>
@@ -20,9 +23,6 @@ usePageSeo(
     </MotionSection>
     <MotionSection>
       <HomePhilosophy />
-    </MotionSection>
-    <MotionSection>
-      <HomeNewsPick />
     </MotionSection>
     <MotionSection>
       <HomeInstagram />
