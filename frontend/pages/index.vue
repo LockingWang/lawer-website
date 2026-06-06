@@ -7,10 +7,11 @@ usePageSeo(
 </script>
 
 <template>
-  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <div>
     <MotionSection above-fold :delay="0.08">
       <HomeHero />
     </MotionSection>
+    <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
     <MotionSection>
       <HomeTrustStrip />
     </MotionSection>
@@ -32,5 +33,6 @@ usePageSeo(
     <MotionSection>
       <HomeCtaStrip />
     </MotionSection>
+    </div>
   </div>
 </template>
