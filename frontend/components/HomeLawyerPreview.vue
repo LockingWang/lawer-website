@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { lawyerHomeTagline, lawyerNameNick, lawyerNameZh } from '~/utils/intruductionSeed'
 import {
-  lawyerPhotoFriendlyAlt,
-  lawyerPhotoFriendlySrc
+  lawyerPhotoProfessionalAlt,
+  lawyerPhotoProfessionalSrc
 } from '~/utils/lawyerPhotos'
 </script>
 
@@ -12,18 +12,18 @@ import {
       主持律師
     </h2>
 
-    <!-- 自 max-w-6xl 內滿版延伸至視窗寬；高度依親民照比例 1432×2006 -->
+    <!-- 自 max-w-6xl 內滿版延伸至視窗寬；高度依形象照比例 896×1195 -->
     <div
       class="relative left-1/2 mt-6 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-surface-muted"
     >
       <div
-        class="mx-auto flex h-[min(85vh,calc(100vw*2006/1432))] w-full max-h-[85vh] items-center justify-center"
+        class="mx-auto flex h-[min(85vh,calc(100vw*1195/896))] w-full max-h-[85vh] items-center justify-center"
       >
         <img
-          :src="lawyerPhotoFriendlySrc"
-          :alt="lawyerPhotoFriendlyAlt()"
-          width="1432"
-          height="2006"
+          :src="lawyerPhotoProfessionalSrc"
+          :alt="lawyerPhotoProfessionalAlt()"
+          width="896"
+          height="1195"
           class="max-h-full max-w-full object-contain object-center"
           loading="lazy"
           decoding="async"
