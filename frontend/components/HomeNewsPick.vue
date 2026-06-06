@@ -5,7 +5,7 @@ const picks = computed(() => newsPlaceholders.slice(0, 3))
 </script>
 
 <template>
-  <section class="mt-16" aria-labelledby="home-news-heading">
+  <section class="mt-4" aria-labelledby="home-news-heading">
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <h2 id="home-news-heading" class="text-2xl font-semibold text-ink">
         最新消息
