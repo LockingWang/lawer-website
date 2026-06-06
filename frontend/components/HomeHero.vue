@@ -37,7 +37,7 @@
           <UButton to="/contact" color="primary" size="lg" icon="i-lucide-phone">
             聯繫本所
           </UButton>
-          <UButton to="/firm" color="white" variant="outline" size="lg" icon="i-lucide-building-2">
+          <UButton to="/firm" size="lg" icon="i-lucide-building-2" class="border border-white/70 bg-white/20 text-white hover:bg-white/30">
             認識本所
           </UButton>
         </div>
