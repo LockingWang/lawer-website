@@ -16,9 +16,6 @@ usePageSeo(
       <HomeNewsPick />
     </MotionSection>
     <MotionSection>
-      <HomeTrustStrip />
-    </MotionSection>
-    <MotionSection>
       <HomeServices />
     </MotionSection>
     <MotionSection>
