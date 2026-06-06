@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { lawyerHomeTagline, lawyerNameNick, lawyerNameZh } from '~/utils/intruductionSeed'
+import { lawyerHomeTagline, lawyerNameNick, lawyerNameZh, trustChips } from '~/utils/intruductionSeed'
 import {
   lawyerPhotoProfessionalAlt,
   lawyerPhotoProfessionalSrc
@@ -8,30 +8,58 @@ import {
 
 <template>
   <section class="mt-16" aria-labelledby="home-lawyer-heading">
-    <h2 id="home-lawyer-heading" class="text-2xl font-semibold text-ink">
-      主持律師
-    </h2>
-
-    <div class="mt-6 overflow-hidden rounded-2xl border border-neutral-sage/30 bg-surface-muted shadow-sm">
+    <div class="overflow-hidden rounded-2xl bg-brand-700 shadow-lg">
       <div class="flex flex-col sm:flex-row">
+
         <!-- 左：文字 -->
-        <div class="flex flex-1 flex-col justify-center p-6 sm:p-8">
-          <p class="text-sm font-medium text-brand-600">
+        <div class="flex flex-1 flex-col justify-center p-8 lg:p-12">
+          <span
+            class="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide text-white/80"
+          >
+            主持律師
+          </span>
+          <h2
+            id="home-lawyer-heading"
+            class="mt-4 text-3xl font-semibold tracking-tight text-white"
+          >
+            {{ lawyerNameZh }}
+          </h2>
+          <p class="mt-0.5 text-sm font-medium text-accent-teal">
             {{ lawyerNameNick }}
           </p>
-          <h3 class="mt-1 text-2xl font-semibold text-ink">
-            {{ lawyerNameZh }}
-          </h3>
-          <p class="mt-4 leading-relaxed text-ink/85">
+          <p class="mt-5 max-w-sm leading-relaxed text-white/75">
             {{ lawyerHomeTagline }}
           </p>
-          <UButton to="/lawyer" color="primary" variant="soft" class="mt-6 self-start" icon="i-lucide-user">
-            完整律師介紹
-          </UButton>
+
+          <!-- 信任徽章 -->
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span
+              v-for="chip in trustChips"
+              :key="chip"
+              class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs text-white/65"
+            >
+              {{ chip }}
+            </span>
+          </div>
+
+          <div class="mt-8">
+            <UButton
+              to="/lawyer"
+              color="white"
+              icon="i-lucide-user"
+            >
+              完整律師介紹
+            </UButton>
+          </div>
         </div>
 
         <!-- 右：照片 -->
-        <div class="h-72 w-full shrink-0 sm:h-auto sm:w-56 lg:w-64">
+        <div class="relative h-72 w-full shrink-0 sm:h-auto sm:w-56 lg:w-64">
+          <!-- teal 左邊線裝飾 -->
+          <div
+            class="absolute inset-y-0 left-0 z-10 hidden w-1 bg-accent-teal/60 sm:block"
+            aria-hidden="true"
+          />
           <img
             :src="lawyerPhotoProfessionalSrc"
             :alt="lawyerPhotoProfessionalAlt()"
@@ -42,6 +70,7 @@ import {
             decoding="async"
           >
         </div>
+
       </div>
     </div>
   </section>
