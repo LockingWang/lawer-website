@@ -2,7 +2,8 @@ import type { Config } from 'tailwindcss'
 
 /**
  * 品牌色與語意 Token — 對齊 website-planning.md §5.5
- * Nuxt UI v2：`app.config.ts` 的 `ui.primary` 設為 `brand`。
+ * 主題切換透過 main.css [data-theme] 選擇器覆蓋各色類，
+ * Nuxt UI 的 --color-primary-* 變數亦同步於 main.css 中覆蓋。
  */
 export default {
   content: [

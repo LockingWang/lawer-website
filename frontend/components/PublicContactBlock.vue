@@ -53,14 +53,8 @@ const props = withDefaults(
         <UIcon name="i-lucide-printer" class="h-3.5 w-3.5 shrink-0 opacity-90" aria-hidden="true" />
         傳真
       </dt>
-      <dd class="mt-1 flex items-start gap-2 tabular-nums">
-        <UIcon
-          name="i-lucide-printer"
-          class="mt-0.5 h-4 w-4 shrink-0 opacity-70"
-          :class="props.variant === 'inverse' ? 'text-accent-soft/80' : 'text-neutral-sage'"
-          aria-hidden="true"
-        />
-        <span>{{ faxDisplay }}</span>
+      <dd class="mt-1 tabular-nums">
+        {{ faxDisplay }}
       </dd>
     </div>
     <div>
@@ -91,14 +85,8 @@ const props = withDefaults(
         <UIcon name="i-lucide-map-pin" class="h-3.5 w-3.5 shrink-0 opacity-90" aria-hidden="true" />
         地址
       </dt>
-      <dd class="mt-1 flex items-start gap-2">
-        <UIcon
-          name="i-lucide-map-pin"
-          class="mt-0.5 h-4 w-4 shrink-0 opacity-70"
-          :class="props.variant === 'inverse' ? 'text-accent-soft/80' : 'text-neutral-sage'"
-          aria-hidden="true"
-        />
-        <span>{{ addressLines.join('') }}</span>
+      <dd class="mt-1">
+        {{ addressLines.join('') }}
       </dd>
     </div>
   </dl>

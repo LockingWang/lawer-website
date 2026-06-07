@@ -1,22 +1,10 @@
 /**
- * 全域樣式入口；品牌 HEX 亦定義於 tailwind.config.ts 供 class 使用。
- * 企劃書 §5.5：可在元件使用 text-ink、bg-brand-500、text-accent-soft 等。
+ * 全域樣式入口。
+ * 主題切換：[data-theme] 選擇器覆蓋 Nuxt UI 的 --color-primary-* 變數，
+ * 以及所有 Tailwind 自訂品牌色 class，無需 !important（父選擇器更高優先度）。
  */
-:root {
-  --color-primary: #5789b6;
-  --color-primary-hover: #456fa5;
-  --color-primary-active: #3d5f94;
-  --color-accent-soft: #89b1c5;
-  --color-accent-teal: #57acac;
-  --color-neutral-sage: #939d98;
-  --color-neutral-taupe: #898984;
-  --color-ink: #393934;
-  --color-navy-deep: #2f4778;
-  --color-surface: #ffffff;
-  --color-surface-muted: #f5f6f4;
-}
 
-/* 跳至主要內容（企劃 §5.6）：平時不佔版面，鍵盤 Tab 焦點時可見 */
+/* ── 跳至主要內容（企劃 §5.6）────────────────────────────── */
 .skip-to-main {
   position: absolute;
   width: 1px;
@@ -42,17 +30,179 @@
   overflow: visible;
   white-space: normal;
   border-radius: 0.375rem;
-  background: var(--color-surface);
-  color: var(--color-ink);
+  background: #ffffff;
+  color: #393934;
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 4px 14px rgba(47, 71, 120, 0.18);
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid #5789B6;
   outline-offset: 2px;
 }
 
 .skip-to-main:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid #5789B6;
   outline-offset: 2px;
 }
+
+/* ════════════════════════════════════════════════════════════
+   THEME 2：深邃藍
+   brand-500 #2358A5 | brand-700 #143873 | navy-deep #0A1C41
+   accent-teal #529EC8
+   ════════════════════════════════════════════════════════════ */
+[data-theme="navy"] {
+  /* Nuxt UI primary scale (RGB triplets) */
+  --color-primary-50:  234 240 250;
+  --color-primary-100: 213 225 245;
+  --color-primary-200: 172 195 235;
+  --color-primary-300: 122 159 220;
+  --color-primary-400: 74 123 200;
+  --color-primary-500: 35 88 165;
+  --color-primary-600: 27 69 137;
+  --color-primary-700: 20 56 115;
+  --color-primary-800: 15 42 86;
+  --color-primary-900: 10 28 65;
+  --color-primary-950: 5 15 37;
+}
+
+/* text */
+[data-theme="navy"] .text-brand-500   { color: #2358A5; }
+[data-theme="navy"] .text-brand-600   { color: #1B4589; }
+[data-theme="navy"] .text-brand-700   { color: #143873; }
+[data-theme="navy"] .text-accent-teal { color: #529EC8; }
+[data-theme="navy"] .text-accent-soft { color: #7BB5D6; }
+
+/* background */
+[data-theme="navy"] .bg-brand-50              { background-color: #EAF0FA; }
+[data-theme="navy"] .bg-brand-200             { background-color: #ACC3EB; }
+[data-theme="navy"] .bg-brand-700             { background-color: #143873; }
+[data-theme="navy"] .bg-navy-deep             { background-color: #0A1C41; }
+[data-theme="navy"] .bg-accent-teal           { background-color: #529EC8; }
+[data-theme="navy"] .bg-brand-500\/10         { background-color: rgb(35 88 165 / 0.10); }
+[data-theme="navy"] .bg-brand-500\/15         { background-color: rgb(35 88 165 / 0.15); }
+
+/* border */
+[data-theme="navy"] .border-brand-200         { border-color: #ACC3EB; }
+[data-theme="navy"] .border-brand-500         { border-color: #2358A5; }
+[data-theme="navy"] .border-brand-500\/10     { border-color: rgb(35 88 165 / 0.10); }
+[data-theme="navy"] .border-brand-500\/25     { border-color: rgb(35 88 165 / 0.25); }
+
+/* ring */
+[data-theme="navy"] .ring-brand-500           { --tw-ring-color: #2358A5; }
+[data-theme="navy"] .ring-brand-500\/40       { --tw-ring-color: rgb(35 88 165 / 0.40); }
+[data-theme="navy"] .ring-brand-500\/60       { --tw-ring-color: rgb(35 88 165 / 0.60); }
+
+/* outline */
+[data-theme="navy"] .outline-brand-500        { outline-color: #2358A5; }
+
+/* text-decoration */
+[data-theme="navy"] .decoration-brand-500\/30 { text-decoration-color: rgb(35 88 165 / 0.30); }
+[data-theme="navy"] .decoration-brand-500\/40 { text-decoration-color: rgb(35 88 165 / 0.40); }
+
+
+/* ════════════════════════════════════════════════════════════
+   THEME 3：墨綠金
+   brand-500 #2E6B4A | brand-700 #1D4530 | navy-deep #0D2117
+   accent-teal #C8941F (金色)
+   ════════════════════════════════════════════════════════════ */
+[data-theme="green-gold"] {
+  --color-primary-50:  234 244 238;
+  --color-primary-100: 210 233 220;
+  --color-primary-200: 168 212 185;
+  --color-primary-300: 114 184 143;
+  --color-primary-400: 74 156 110;
+  --color-primary-500: 46 107 74;
+  --color-primary-600: 35 84 58;
+  --color-primary-700: 29 69 48;
+  --color-primary-800: 21 51 34;
+  --color-primary-900: 13 33 23;
+  --color-primary-950: 6 15 11;
+}
+
+/* text */
+[data-theme="green-gold"] .text-brand-500   { color: #2E6B4A; }
+[data-theme="green-gold"] .text-brand-600   { color: #23543A; }
+[data-theme="green-gold"] .text-brand-700   { color: #1D4530; }
+[data-theme="green-gold"] .text-accent-teal { color: #C8941F; }
+[data-theme="green-gold"] .text-accent-soft { color: #D8B46A; }
+
+/* background */
+[data-theme="green-gold"] .bg-brand-50              { background-color: #EAF4EE; }
+[data-theme="green-gold"] .bg-brand-200             { background-color: #A8D4B9; }
+[data-theme="green-gold"] .bg-brand-700             { background-color: #1D4530; }
+[data-theme="green-gold"] .bg-navy-deep             { background-color: #0D2117; }
+[data-theme="green-gold"] .bg-accent-teal           { background-color: #C8941F; }
+[data-theme="green-gold"] .bg-brand-500\/10         { background-color: rgb(46 107 74 / 0.10); }
+[data-theme="green-gold"] .bg-brand-500\/15         { background-color: rgb(46 107 74 / 0.15); }
+
+/* border */
+[data-theme="green-gold"] .border-brand-200         { border-color: #A8D4B9; }
+[data-theme="green-gold"] .border-brand-500         { border-color: #2E6B4A; }
+[data-theme="green-gold"] .border-brand-500\/10     { border-color: rgb(46 107 74 / 0.10); }
+[data-theme="green-gold"] .border-brand-500\/25     { border-color: rgb(46 107 74 / 0.25); }
+
+/* ring */
+[data-theme="green-gold"] .ring-brand-500           { --tw-ring-color: #2E6B4A; }
+[data-theme="green-gold"] .ring-brand-500\/40       { --tw-ring-color: rgb(46 107 74 / 0.40); }
+[data-theme="green-gold"] .ring-brand-500\/60       { --tw-ring-color: rgb(46 107 74 / 0.60); }
+
+/* outline */
+[data-theme="green-gold"] .outline-brand-500        { outline-color: #2E6B4A; }
+
+/* text-decoration */
+[data-theme="green-gold"] .decoration-brand-500\/30 { text-decoration-color: rgb(46 107 74 / 0.30); }
+[data-theme="green-gold"] .decoration-brand-500\/40 { text-decoration-color: rgb(46 107 74 / 0.40); }
+
+
+/* ════════════════════════════════════════════════════════════
+   THEME 4：炭灰藍
+   brand-500 #3F567A | brand-700 #26354C | navy-deep #131B28
+   accent-teal #6B9ED4
+   ════════════════════════════════════════════════════════════ */
+[data-theme="charcoal"] {
+  --color-primary-50:  239 242 247;
+  --color-primary-100: 221 227 238;
+  --color-primary-200: 188 200 220;
+  --color-primary-300: 148 167 196;
+  --color-primary-400: 107 135 169;
+  --color-primary-500: 63 86 122;
+  --color-primary-600: 48 69 98;
+  --color-primary-700: 38 53 76;
+  --color-primary-800: 28 39 57;
+  --color-primary-900: 19 27 40;
+  --color-primary-950: 9 14 22;
+}
+
+/* text */
+[data-theme="charcoal"] .text-brand-500   { color: #3F567A; }
+[data-theme="charcoal"] .text-brand-600   { color: #304562; }
+[data-theme="charcoal"] .text-brand-700   { color: #26354C; }
+[data-theme="charcoal"] .text-accent-teal { color: #6B9ED4; }
+[data-theme="charcoal"] .text-accent-soft { color: #8BB4D8; }
+
+/* background */
+[data-theme="charcoal"] .bg-brand-50              { background-color: #EFF2F7; }
+[data-theme="charcoal"] .bg-brand-200             { background-color: #BCC8DC; }
+[data-theme="charcoal"] .bg-brand-700             { background-color: #26354C; }
+[data-theme="charcoal"] .bg-navy-deep             { background-color: #131B28; }
+[data-theme="charcoal"] .bg-accent-teal           { background-color: #6B9ED4; }
+[data-theme="charcoal"] .bg-brand-500\/10         { background-color: rgb(63 86 122 / 0.10); }
+[data-theme="charcoal"] .bg-brand-500\/15         { background-color: rgb(63 86 122 / 0.15); }
+
+/* border */
+[data-theme="charcoal"] .border-brand-200         { border-color: #BCC8DC; }
+[data-theme="charcoal"] .border-brand-500         { border-color: #3F567A; }
+[data-theme="charcoal"] .border-brand-500\/10     { border-color: rgb(63 86 122 / 0.10); }
+[data-theme="charcoal"] .border-brand-500\/25     { border-color: rgb(63 86 122 / 0.25); }
+
+/* ring */
+[data-theme="charcoal"] .ring-brand-500           { --tw-ring-color: #3F567A; }
+[data-theme="charcoal"] .ring-brand-500\/40       { --tw-ring-color: rgb(63 86 122 / 0.40); }
+[data-theme="charcoal"] .ring-brand-500\/60       { --tw-ring-color: rgb(63 86 122 / 0.60); }
+
+/* outline */
+[data-theme="charcoal"] .outline-brand-500        { outline-color: #3F567A; }
+
+/* text-decoration */
+[data-theme="charcoal"] .decoration-brand-500\/30 { text-decoration-color: rgb(63 86 122 / 0.30); }
+[data-theme="charcoal"] .decoration-brand-500\/40 { text-decoration-color: rgb(63 86 122 / 0.40); }

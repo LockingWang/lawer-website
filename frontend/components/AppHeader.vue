@@ -60,6 +60,9 @@ function isActive(path: string) {
         </NuxtLink>
       </nav>
 
+      <!-- 色彩主題切換（桌面：在 nav 右側；手機：在漢堡左側） -->
+      <ThemeSwitcher />
+
       <!-- 手機漢堡 -->
       <div class="flex items-center lg:hidden">
         <UButton
@@ -112,6 +115,14 @@ function isActive(path: string) {
             {{ item.label }}
           </NuxtLink>
         </nav>
+
+        <!-- 手機主題切換 -->
+        <div class="mt-4 border-t border-neutral-sage/20 pt-4">
+          <p class="mb-2 px-1 text-xs font-semibold uppercase tracking-widest text-neutral-sage">
+            色彩主題
+          </p>
+          <ThemeSwitcherInline />
+        </div>
       </div>
     </USlideover>
   </header>
