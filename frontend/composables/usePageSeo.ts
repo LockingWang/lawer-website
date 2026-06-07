@@ -6,9 +6,14 @@
 export function usePageSeo(
   title: string,
   description: string,
-  options?: { ogTitle?: string }
+  options?: { ogTitle?: string; ogImage?: string }
 ) {
+  const config = useRuntimeConfig()
+  const siteUrl = config.public.siteUrl as string
   const ogTitle = options?.ogTitle ?? title
+  const ogImage = options?.ogImage
+    ? `${siteUrl}${options.ogImage}`
+    : `${siteUrl}/brand/firm-logo-horizontal.png`
 
   useHead({ title })
 
@@ -17,6 +22,9 @@ export function usePageSeo(
     description,
     ogTitle,
     ogDescription: description,
-    twitterCard: 'summary_large_image'
+    ogImage,
+    ogUrl: siteUrl,
+    twitterCard: 'summary_large_image',
+    twitterImage: ogImage
   })
 }

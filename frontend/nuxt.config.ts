@@ -13,7 +13,11 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'zh-Hant' },
-      titleTemplate: '%s · 無憂吳律事務所'
+      titleTemplate: '%s · 無憂吳律事務所',
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/brand/firm-brand-mark-on-black-alt-04.png' },
+        { rel: 'apple-touch-icon', href: '/brand/firm-brand-mark-on-black-alt-04.png' }
+      ]
     }
   },
 
@@ -21,7 +25,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: '',
-      buildVersion: ''
+      buildVersion: '',
+      siteUrl: 'https://sallywu.tw'
     }
   },
 
