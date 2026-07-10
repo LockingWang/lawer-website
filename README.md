@@ -7,7 +7,7 @@
 | [`website-planning.md`](./website-planning.md) | 產品、IA、UX、色系 Token、法遵、**§8 技術與部署**之完整規格 |
 | [`DEVELOPMENT-WORKFLOW.md`](./DEVELOPMENT-WORKFLOW.md) | 分階段範圍、驗收、Agent 守則 |
 | [`DEVELOPMENT-PHASE.md`](./DEVELOPMENT-PHASE.md) | **目前實作階段（0～12）**；進入下一階段時僅需更新此檔 |
-| [`DEPLOYMENT.md`](./DEPLOYMENT.md) | **Cloudflare Pages + Railway**：建置指令、輸出目錄、CORS、環境變數（階段 12） |
+| [`DEPLOYMENT.md`](./DEPLOYMENT.md) | **Cloudflare Pages + Google Cloud Run**：建置指令、輸出目錄、CORS、環境變數（階段 12） |
 | [`intruduction.md`](./intruduction.md) | 事務所／主持律師之內容種子（聯絡方式等） |
 
 ---
@@ -17,10 +17,10 @@
 | 層級 | 選型 | 託管 |
 |------|------|------|
 | 前端 | **Nuxt 3** + **TypeScript**、**Vite**、**Tailwind CSS**、**Nuxt UI**、**Lucide**、進階動效 **GSAP** | **Cloudflare Pages**（靜態／SSG 為主） |
-| 後端 | **Node.js**（Express／Fastify／Hono 擇一）：聯絡表單寄信、Instagram Graph API 代理 | **Railway** |
+| 後端 | **Node.js**（Express／Fastify／Hono 擇一）：聯絡表單寄信、Instagram Graph API 代理 | **Google Cloud Run** |
 | 內容 | 最新消息等 **僅前端 repo 維護**；**不使用 Supabase**、無 CMS 資料庫 | — |
 
-機密（Meta App Secret、郵件 API Key、SMTP 密碼等）**僅**能出現在後端環境變數（例如 Railway），**不得**提交至 Git 或寫進前端 bundle。
+機密（Meta App Secret、郵件 API Key、SMTP 密碼等）**僅**能出現在後端環境變數（例如 Google Cloud Run），**不得**提交至 Git 或寫進前端 bundle。
 
 ---
 
@@ -34,7 +34,7 @@ lawer-website/
 ├── website-planning.md
 ├── DEVELOPMENT-WORKFLOW.md
 ├── DEVELOPMENT-PHASE.md
-├── DEPLOYMENT.md      # Cloudflare Pages + Railway（階段 12）
+├── DEPLOYMENT.md      # Cloudflare Pages + Google Cloud Run（階段 12）
 ├── intruduction.md
 ├── package-lock.json  # npm 鎖檔（請與 package.json 一併提交）
 └── README.md
@@ -85,7 +85,7 @@ npm run verify
 
 手動補強（建議上線前再做一次）：同時執行 `npm run dev:backend` 與 `npm run dev:frontend`，在 `frontend/.env` 設定 `NUXT_PUBLIC_API_BASE` 指向後端，於瀏覽器開啟 `/contact` 實際送出表單，確認成功訊息與後端日誌（含 **CORS** 與 **`$fetch`** 行為）。
 
-**正式／預覽上線**：請依 **[`DEPLOYMENT.md`](./DEPLOYMENT.md)** 設定 Cloudflare Pages、Railway 與 `CORS_ORIGINS`／`CORS_ORIGIN_SUFFIXES`。
+**正式／預覽上線**：請依 **[`DEPLOYMENT.md`](./DEPLOYMENT.md)** 設定 Cloudflare Pages、Google Cloud Run 與 `CORS_ORIGINS`／`CORS_ORIGIN_SUFFIXES`。
 
 ---
 
@@ -102,7 +102,7 @@ npm run verify
 
 ## 部署（階段 12）
 
-- **總覽**：[**`DEPLOYMENT.md`**](./DEPLOYMENT.md)（Cloudflare Pages 建置／輸出、Railway `Dockerfile` 或 `npm start`、環境變數表、CORS 正式與預覽網域）。
+- **總覽**：[**`DEPLOYMENT.md`**](./DEPLOYMENT.md)（Cloudflare Pages 建置／輸出、Google Cloud Run `Dockerfile` 或 `npm start`、環境變數表、CORS 正式與預覽網域）。
 - **後端**：亦可見 [`backend/README.md`](./backend/README.md)。
 
 ---

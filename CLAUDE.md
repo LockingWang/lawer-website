@@ -3,7 +3,7 @@
 ## 專案概覽
 
 高雄在地法律事務所（無憂吳律 / Sallywu Attorneys-At-Law）的官方網站。
-Nuxt 3 前端 + Node.js 後端（Railway 部署），設計強調「專業可信、溫暖親民」。
+Nuxt 3 前端 + Node.js 後端（Google Cloud Run 部署），設計強調「專業可信、溫暖親民」。
 
 ## 架構
 

@@ -24,7 +24,7 @@
 下列為**非討價還價項**。若規格與 Agent「慣例」衝突，**以企劃書為準**。
 
 1. **技術棧**須符合 `website-planning.md` **§8、§8.7**：**Nuxt 3** + **TypeScript**、**Tailwind CSS**、**Nuxt UI**、**Lucide**、進階動效 **GSAP**（並遵守 **§4.5**、`prefers-reduced-motion`）。不得擅自改為其他框架或 UI 庫。
-2. **後端**僅 **Node.js**（Express / Fastify / Hono 擇一），部署 **Railway**；職責僅 **§8.4** 所列兩項（表單寄信、IG Graph API 代理）。**禁止**引入 **Supabase**、資料庫 CMS、或將 Meta／郵件密鑰置於前端（**§8.1、§8.2**）。
+2. **後端**僅 **Node.js**（Express / Fastify / Hono 擇一），部署 **Google Cloud Run**；職責僅 **§8.4** 所列兩項（表單寄信、IG Graph API 代理）。**禁止**引入 **Supabase**、資料庫 CMS、或將 Meta／郵件密鑰置於前端（**§8.1、§8.2**）。
 3. **RWD**：**Mobile-first**（**§2.0、§3.3**）。不得只做桌面版後硬縮放。
 4. **Header / Footer**：須符合 **§2.2b**（導覽路由一致、Footer 含 LINE QR 區塊語意與 RWD 堆疊、外連 `rel="noopener noreferrer"`）。
 5. **色系**：使用企劃書 **§5.5** 之 Token 語意（`primary`、`ink`、`navy-deep` 等），避免散落未命名 HEX。
@@ -50,11 +50,11 @@
 | **5** | 本所介紹＋律師介紹頁 | 排版＋`intruduction.md` 內容接入（可日後改字） | 兩頁內容正確、CTA 至聯繫頁 | §2.3、`intruduction.md` |
 | **6** | 最新消息模組 | 列表＋單篇、資料源（JSON 或 MD）、SSG/預渲染可瀏覽 | 點列表進單篇、網址獨立 | §8.3、§6.4 |
 | **7** | 聯繫頁 UI | 表單欄位、地圖佔位、社群連結佔位、隱私勾選框 | 表單可填、驗證提示（可先不接 API） | §2.5、§6.5 |
-| **8** | Railway 後端：聯絡 API | POST 驗證、honeypot/限流、SMTP 或郵件 API 設定說明 | 用 curl/Thunder 測通寄信（或測試信箱） | §8.4、§2.5 |
+| **8** | Google Cloud Run 後端：聯絡 API | POST 驗證、honeypot/限流、SMTP 或郵件 API 設定說明 | 用 curl/Thunder 測通寄信（或測試信箱） | §8.4、§2.5 |
 | **9** | 前端串接表單 | `NUXT_PUBLIC_API_BASE`、成功/失敗 UX、**§2.5 備援**文案 | 從網站送出後後端收到並寄信 | §8.2、§6.5 |
 | **10** | IG API 代理＋首頁區塊 | GET 限動 JSON、快取、前端與 **§2.6 失敗備援** | 拔 token 或故意錯誤時仍見備援 UI | §2.6、§8.4 |
 | **11** | 動效與無障礙掃尾 | GSAP 進場（克制）、`prefers-reduced-motion`、對照 §5.6 | 減少動態開啟時不強迫動畫 | §4.5、§5.6、§8.7 |
-| **12** | 部署與文件 | Cloudflare Pages、Railway、CORS、網域變數清單 | 正式／預覽環境可連線 | §8.1、§8.5 |
+| **12** | 部署與文件 | Cloudflare Pages、Google Cloud Run、CORS、網域變數清單 | 正式／預覽環境可連線 | §8.1、§8.5 |
 
 **建議節奏**：完成階段 *N* → 你本地執行專案檢查 → 回饋修正 → 勾選「階段驗收」後再開階段 *N+1*。
 
@@ -110,11 +110,11 @@
 - **不做**：真後端連線（階段 9）。
 - **驗收**：前端驗證、錯誤態、成功態 UI（可先 mock）。
 
-### 階段 8 — Railway 後端：聯絡 API
+### 階段 8 — Google Cloud Run 後端：聯絡 API
 
 - **做**：POST、`CORS` 白名單設計、限流或 honeypot、寄信整合說明。
 - **不做**：IG（階段 10）。
-- **驗收**：本地或 Railway 上 curl 測試成功。
+- **驗收**：本地或 Cloud Run 上 curl 測試成功。
 
 ### 階段 9 — 前端串接表單
 
@@ -136,7 +136,7 @@
 
 ### 階段 12 — 部署與文件
 
-- **做**：Cloudflare Pages 建置指令、Railway `Dockerfile` 或 start 指令、環境變數表、CORS 正式/預覽網域。
+- **做**：Cloudflare Pages 建置指令、Google Cloud Run `Dockerfile` 或 start 指令、環境變數表、CORS 正式/預覽網域。
 - **不做**：代客購買網域（可列檢查清單）。
 - **驗收**：預覽 URL 可瀏覽全站主路徑。
 
@@ -158,7 +158,7 @@
 | 9 | [x] | [x] | `runtimeConfig.public.apiBase`、`ContactRequestForm` `$fetch` POST、400 `setErrors`、失敗備援、無 API 時 mock |
 | 10 | [x] | [x] | `GET /api/instagram/stories` Graph 代理、快取、`HomeInstagram` 串 `apiBase`、§2.6 備援 |
 | 11 | [x] | [x] | GSAP 進場、`usePrefersReducedMotion`、`MotionSection`、跳至主要內容 |
-| 12 | [x] | [x] | `DEPLOYMENT.md`、Railway `Dockerfile`、`CORS_ORIGIN_SUFFIXES`、README 部署／維運 |
+| 12 | [x] | [x] | `DEPLOYMENT.md`、Google Cloud Run `Dockerfile`、`CORS_ORIGIN_SUFFIXES`、README 部署／維運 |
 
 ---
 
@@ -195,4 +195,4 @@
 |------|------|------|
 | 1.0 | 2026-05-10 | 初版：12 階段、Agent 守則、Prompt 範本、驗收表 |
 | 1.5 | 2026-05-10 | 階段 4：首頁 Home* 元件、服務／信任／新聞精選／IG 備援／CTA |
-| 1.6 | 2026-05-10 | 階段 12：`DEPLOYMENT.md`、Railway `backend/Dockerfile`、`CORS_ORIGIN_SUFFIXES`、README 部署連結 |
+| 1.6 | 2026-05-10 | 階段 12：`DEPLOYMENT.md`、Google Cloud Run `backend/Dockerfile`、`CORS_ORIGIN_SUFFIXES`、README 部署連結 |

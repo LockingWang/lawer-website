@@ -59,7 +59,7 @@ curl -sS http://127.0.0.1:3001/api/instagram/stories
 
 設定憑證後，後端會向 `graph.facebook.com` 取目前有效限動；Graph 錯誤時同樣回 **`200`** 空陣列與 `meta.source: error`，不洩漏權杖。
 
-## 正式寄信（Railway）
+## 正式寄信（Google Cloud Run）
 
 擇一設定：
 
@@ -73,11 +73,11 @@ curl -sS http://127.0.0.1:3001/api/instagram/stories
 - **`CORS_ORIGINS`**：逗號分隔多個前端來源（含 `https://你的網域` 與必要時之固定預覽 URL）。瀏覽器請求會帶 `Origin`；**curl 可不帶 Origin** 仍會通過。
 - **`CORS_ORIGIN_SUFFIXES`**（選填）：逗號分隔之 **hostname 後綴**（不含 `https://`），僅匹配 **https** 來源，便於一次允許多組 Cloudflare Pages 預覽網址（例：`pages.dev,cloudflarepages.net`）。見 [`DEPLOYMENT.md`](../DEPLOYMENT.md) 第四節。
 
-## Railway 部署建議
+## Google Cloud Run 部署建議
 
-- **Root Directory**：`backend`
-- **Start Command**：`npm start`
-- **Docker（選用）**：於 Railway 指定 **Dockerfile** 為 `backend/Dockerfile`（build context 為 `backend/`）。
-- 於 Variables 填入上列環境變數（勿將密鑰提交 Git）。
+- **自動部署**：`.github/workflows/deploy-backend.yml` 監聽 master 分支的 backend/ 變更，自動構建 Docker image 並部署至 Cloud Run。
+- **Dockerfile**：`backend/Dockerfile` 已配置，無需手動設定。
+- **環境變數**：在 Cloud Run Service → Settings → Runtime environment variables 填入上列環數（勿將密鑰提交 Git）。
+- **當前 URL**：`https://lawer-backend-323796758315.asia-east1.run.app`
 
 完整步驟與 CORS 預覽網域說明見 repo 根目錄 **[`DEPLOYMENT.md`](../DEPLOYMENT.md)**。
