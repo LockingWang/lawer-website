@@ -17,9 +17,11 @@ import { addressSingleLine, phoneDisplay, phoneTelHref, siteNameZh } from '~/uti
 
 usePageSeo(
   '律師介紹',
-  `${lawyerNameZh}（${lawyerNameNick}）學經歷、專長與現職。${practiceAreasSummary}。${addressSingleLine}。`,
-  { ogTitle: `律師介紹｜${lawyerNameZh}｜${siteNameZh}` }
+  `${lawyerNameZh}（${lawyerNameNick}）學經歷、專長與現職。${practiceAreasSummary}。曾任性騷擾調查外聘委員、校園霸凌防制委員。${addressSingleLine}。`,
+  { ogTitle: `律師介紹｜${lawyerNameZh}｜高雄家事・職場性騷擾／霸凌調查律師｜${siteNameZh}` }
 )
+
+useLawyerJsonLd()
 </script>
 
 <template>

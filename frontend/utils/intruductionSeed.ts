@@ -6,7 +6,7 @@ export const lawyerNameZh = '吳佩珊律師'
 export const lawyerNameNick = '莎律'
 
 export const practiceAreasSummary =
-  '家事案件、校園事件調查、行政、民、刑事訴訟'
+  '家事案件、校園事件調查、職場性騷擾調查、職場霸凌調查、行政、民、刑事訴訟'
 
 /** 首頁服務摘要卡片（對應專長敘述拆分） */
 export const practiceAreaCards = [
@@ -18,6 +18,11 @@ export const practiceAreaCards = [
   {
     title: '校園與調查',
     desc: '校園事件調查、性平與霸凌防制相關法律意見。',
+    to: '/firm'
+  },
+  {
+    title: '職場性騷擾與霸凌調查',
+    desc: '職場性騷擾、職場霸凌事件之調查、外部委員與申訴處理法律意見。',
     to: '/firm'
   },
   {
@@ -41,6 +46,7 @@ export const practiceAreaCards = [
 export const trustChips = [
   '法扶扶助律師',
   '犯保合作律師',
+  '性騷擾／霸凌調查',
   '國民法官實務',
   '校園法治教育',
   '信託／金融進修'

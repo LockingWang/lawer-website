@@ -24,6 +24,7 @@ usePageSeo(
 const cardIcons: Record<string, string> = {
   '家事事件': 'i-lucide-heart-handshake',
   '校園與調查': 'i-lucide-graduation-cap',
+  '職場性騷擾與霸凌調查': 'i-lucide-search-check',
   '行政爭議': 'i-lucide-landmark',
   '民事訴訟': 'i-lucide-scale',
   '刑事訴訟': 'i-lucide-shield-check'
