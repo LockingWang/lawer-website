@@ -17,6 +17,13 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/png', href: '/brand/firm-brand-mark-on-black-alt-04.png' },
         { rel: 'apple-touch-icon', href: '/brand/firm-brand-mark-on-black-alt-04.png' }
+      ],
+      script: [
+        { src: 'https://www.googletagmanager.com/gtag/js?id=G-83XCNWBREH', async: true },
+        {
+          innerHTML:
+            "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-83XCNWBREH');"
+        }
       ]
     }
   },
