@@ -15,8 +15,9 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'zh-Hant' },
       titleTemplate: '%s · 無憂吳律事務所',
       link: [
-        { rel: 'icon', type: 'image/png', href: '/brand/firm-brand-mark-on-black-alt-04.png' },
-        { rel: 'apple-touch-icon', href: '/brand/firm-brand-mark-on-black-alt-04.png' }
+        { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/favicon.png' },
+        { rel: 'icon', type: 'image/x-icon', sizes: '48x48 32x32 16x16', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }
       ],
       script: [
         { src: 'https://www.googletagmanager.com/gtag/js?id=G-83XCNWBREH', async: true },
