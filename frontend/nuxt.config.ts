@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     public: {
       apiBase: '',
       buildVersion: '',
-      siteUrl: 'https://sallywu.tw'
+      siteUrl: 'https://wuyouwululawyer.com'
     }
   },
 

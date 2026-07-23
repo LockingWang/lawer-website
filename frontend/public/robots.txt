@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sallywu.tw/sitemap.xml
+Sitemap: https://wuyouwululawyer.com/sitemap.xml
