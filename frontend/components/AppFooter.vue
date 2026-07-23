@@ -7,8 +7,6 @@ import {
   socialLineOfficialQrSrc
 } from '~/utils/siteContact'
 
-const { buildVersion } = useRuntimeConfig().public
-const shortVersion = buildVersion ? buildVersion.slice(0, 7) : 'dev'
 </script>
 
 <template>
@@ -85,8 +83,9 @@ const shortVersion = buildVersion ? buildVersion.slice(0, 7) : 'dev'
       </div>
     </div>
 
-    <div class="border-t border-white/10 px-4 py-4 sm:px-6 lg:px-8">
+    <div class="border-t border-white/10 px-4 py-2 sm:px-6 lg:px-8">
       <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-surface/70">
+        <span class="text-surface/60">© {{ new Date().getFullYear() }} {{ siteNameZh }}</span>
         <NuxtLink
           v-for="legal in footerLegalNav"
           :key="legal.to"
@@ -96,11 +95,6 @@ const shortVersion = buildVersion ? buildVersion.slice(0, 7) : 'dev'
           {{ legal.label }}
         </NuxtLink>
       </div>
-    </div>
-
-    <div class="border-t border-white/10 py-4 text-center text-xs text-surface/60">
-      © {{ new Date().getFullYear() }} {{ siteNameZh }} · 網站建置中
-      <span class="ml-3 opacity-40">v{{ shortVersion }}</span>
     </div>
   </footer>
 </template>

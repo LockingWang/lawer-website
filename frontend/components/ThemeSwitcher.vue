@@ -2,6 +2,8 @@
 import { useTheme, THEMES } from '~/composables/useTheme'
 
 const { theme, applyTheme } = useTheme()
+const { buildVersion } = useRuntimeConfig().public
+const shortVersion = buildVersion ? String(buildVersion).slice(0, 7) : 'dev'
 const open = ref(false)
 const containerRef = ref<HTMLElement | null>(null)
 
@@ -85,6 +87,10 @@ onUnmounted(() => document.removeEventListener('click', handleOutside, true))
             <span class="block text-[11px] font-normal text-neutral-sage">{{ t.description }}</span>
           </span>
         </button>
+
+        <p class="mt-1 border-t border-neutral-sage/15 px-2 pb-1 pt-2 text-right text-[10px] text-neutral-sage/70">
+          v{{ shortVersion }}
+        </p>
       </div>
     </Transition>
   </div>

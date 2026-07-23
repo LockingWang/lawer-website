@@ -13,7 +13,7 @@ import {
 
 usePageSeo(
   '聯繫本所',
-  `留言表單、電話 ${phoneDisplay}、${addressSingleLine}。亦可於 Google 地圖查看事務所位置。`,
+  `電話 ${phoneDisplay}、${addressSingleLine}。亦可於 Google 地圖查看事務所位置。`,
   { ogTitle: `聯繫本所｜${siteNameZh}` }
 )
 </script>
@@ -79,7 +79,8 @@ usePageSeo(
         </div>
         <div class="px-8 py-6">
           <div class="overflow-hidden rounded-xl border border-neutral-sage/20">
-            <div class="relative aspect-video w-full">
+            <!-- 不用 aspect-video：該類未被 Tailwind 產出，容器會塌成 0 高導致地圖消失 -->
+            <div class="relative w-full" style="aspect-ratio: 16 / 9">
               <iframe
                 :src="googleMapsEmbedSrc"
                 class="absolute inset-0 h-full w-full border-0"
@@ -157,8 +158,9 @@ usePageSeo(
         </div>
       </section>
 
-      <!-- 線上留言（置底） -->
+      <!-- 線上留言（置底）：暫時隱藏，待正式開放時移除 v-if -->
       <section
+        v-if="false"
         class="rounded-2xl border border-brand-500/25 bg-white shadow-sm"
         aria-labelledby="contact-form"
       >
