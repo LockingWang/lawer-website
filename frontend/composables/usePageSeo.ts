@@ -12,7 +12,8 @@ export function usePageSeo(
   const config = useRuntimeConfig()
   const route = useRoute()
   const siteUrl = config.public.siteUrl as string
-  const canonicalUrl = `${siteUrl}${route.path === '/' ? '/' : route.path}`
+  // 靜態部署會將 `/firm` 308 轉址到 `/firm/`，canonical 統一帶結尾斜線以指向最終網址
+  const canonicalUrl = `${siteUrl}${route.path.endsWith('/') ? route.path : `${route.path}/`}`
   const ogTitle = options?.ogTitle ?? title
   const ogImage = options?.ogImage
     ? `${siteUrl}${options.ogImage}`

@@ -87,7 +87,7 @@ export function useLawyerJsonLd() {
           name: '吳佩珊',
           alternateName: '莎律',
           jobTitle: '律師',
-          url: `${siteUrl}/lawyer`,
+          url: `${siteUrl}/lawyer/`,
           worksFor: { '@id': `${siteUrl}/#firm` },
           alumniOf: [
             { '@type': 'CollegeOrUniversity', name: '中正大學犯罪防治研究所' },

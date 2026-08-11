@@ -6,11 +6,11 @@ import { newsPlaceholders } from '../../data/newsPlaceholders'
  */
 const staticPages = [
   { path: '/', priority: '1.0' },
-  { path: '/firm', priority: '0.9' },
-  { path: '/lawyer', priority: '0.9' },
-  { path: '/news', priority: '0.7' },
-  { path: '/contact', priority: '0.8' },
-  { path: '/privacy', priority: '0.3' }
+  { path: '/firm/', priority: '0.9' },
+  { path: '/lawyer/', priority: '0.9' },
+  { path: '/news/', priority: '0.7' },
+  { path: '/contact/', priority: '0.8' },
+  { path: '/privacy/', priority: '0.3' }
 ] as const
 
 export default defineEventHandler((event) => {
@@ -21,7 +21,7 @@ export default defineEventHandler((event) => {
       p => `  <url>\n    <loc>${siteUrl}${p.path}</loc>\n    <priority>${p.priority}</priority>\n  </url>`
     ),
     ...newsPlaceholders.map(
-      n => `  <url>\n    <loc>${siteUrl}/news/${n.slug}</loc>\n    <lastmod>${n.date}</lastmod>\n    <priority>0.6</priority>\n  </url>`
+      n => `  <url>\n    <loc>${siteUrl}/news/${n.slug}/</loc>\n    <lastmod>${n.date}</lastmod>\n    <priority>0.6</priority>\n  </url>`
     )
   ]
 
